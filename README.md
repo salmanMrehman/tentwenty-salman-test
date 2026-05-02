@@ -1,4 +1,4 @@
-# ticktock — Timesheet Management
+# ticktock : Timesheet Management
 
 A small Next.js + TypeScript SaaS-style timesheet manager built for the
 **Front-end Developer Technical Assessment**.
@@ -195,8 +195,8 @@ and the bundle stays slim.
 
 The Redux store is split into two domain slices:
 
-- `timesheetsSlice` — dashboard list + filters + pagination.
-- `weekDetailSlice` — the per-week page + create/update/delete thunks.
+- `timesheetsSlice` : dashboard list + filters + pagination.
+- `weekDetailSlice` : the per-week page + create/update/delete thunks.
 
 Each thunk that mutates uses `rejectWithValue` to carry a
 `MutationError { message, fields? }`. The container component
@@ -227,14 +227,14 @@ single source of truth. The entry validator enforces:
 
 The dashboard "Date Range" filter follows the brief's "if the range
 covers multiple weeks, show them all" rule via
-`doesWeekOverlapRange()` — a week is included when its
+`doesWeekOverlapRange()` : a week is included when its
 `[startDate, endDate]` overlaps the selected `[from, to]` range, even
 if only by one day.
 
 ### Pagination
 
 `helpers/pagination.ts` builds the design's exact page list
-(`Previous 1 2 3 4 5 6 7 8 ... 99 Next`) — first 8 + ellipsis + last,
+(`Previous 1 2 3 4 5 6 7 8 ... 99 Next`) : first 8 + ellipsis + last,
 or `1 ... cur-1 cur cur+1 ... last` once you scroll past page 8.
 
 ---
@@ -243,7 +243,7 @@ or `1 ... cur-1 cur cur+1 ... last` once you scroll past page 8.
 
 1. **Mocked persistence.** The 99-week mock dataset lives in memory
    inside `src/mocks/timesheets.ts`. Add/edit/delete persists for the
-   lifetime of the dev server. Restarting wipes changes — that's fine
+   lifetime of the dev server. Restarting wipes changes : that's fine
    for the demo.
 2. **5-day work week.** Week ranges are Monday–Friday (matching the
    design which only ever shows weekdays). Saturdays and Sundays are
@@ -264,17 +264,14 @@ or `1 ... cur-1 cur cur+1 ... last` once you scroll past page 8.
 
 ## Evaluation criteria checklist
 
-- [x] **UI/UX** — Responsive layout, design-faithful colors, ARIA
+- [x] **UI/UX** : Responsive layout, design-faithful colors, ARIA
       labels, focus rings, error states, loading states.
-- [x] **Code quality** — Folder per component (3 files), co-located
-      tests, English strings centralised, color tokens single source
-      of truth, no hardcoded constants in pages/components.
-- [x] **API integration** — Internal Next.js API routes, typed
+- [x] **API integration** : Internal Next.js API routes, typed
       response envelope, central `jsonFetch`, server-side validation
       mirrored in client helpers.
-- [x] **State management** — Redux Toolkit with two domain slices,
+- [x] **State management** : Redux Toolkit with two domain slices,
       typed `useAppSelector` / `useAppDispatch`, thunk-based async.
-- [x] **Testing** — 80+ Jest tests covering helpers, common UI, and
+- [x] **Testing** : 80+ Jest tests covering helpers, common UI, and
       page-level components (`LoginForm`, `TimesheetTable`,
       `EntryModal`, etc.).
-- [x] **README** — This file.
+- [x] **README** : This file.
