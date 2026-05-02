@@ -1,0 +1,105 @@
+import { SelectHTMLAttributes, forwardRef, useId } from "react";
+import { cn } from "@helpers/classNames";
+import styles from "./Select.module.css";
+
+export interface SelectOption<T extends string = string> {
+  value: T;
+  label: string;
+}
+
+export interface SelectProps
+  extends Omit<SelectHTMLAttributes<HTMLSelectElement>, "children"> {
+  label?: string;
+  hint?: string;
+  error?: string;
+  options: SelectOption[];
+  /** Shown when no value is selected. */
+  placeholder?: string;
+  required?: boolean;
+}
+
+/**
+ * Native `<select>` styled to match the design.
+ *
+ * Sticking with native here keeps things accessible by default
+ * (keyboard nav, screen reader support) without third-party deps.
+ */
+export const Select = forwardRef<HTMLSelectElement, SelectProps>(
+  function Select(
+    {
+      label,
+      hint,
+      error,
+      options,
+      placeholder,
+      required,
+      className,
+      id,
+      value,
+      defaultValue,
+      ...rest
+    },
+    ref,
+  ) {
+    const reactId = useId();
+    const selectId = id ?? `select-${reactId}`;
+    const describedBy = error
+      ? `${selectId}-error`
+      : hint
+      ? `${selectId}-hint`
+      : undefined;
+
+    // We render an empty <option> only when there's a placeholder and no
+    // value — this keeps the placeholder behaving like a native one.
+    const showPlaceholder =
+      Boolean(placeholder) &&
+      (value === undefined || value === "") &&
+      (defaultValue === undefined || defaultValue === "");
+
+    return (
+      <div className={cn(styles.field, className)}>
+        {label ? (
+          <label htmlFor={selectId} className={styles.label}>
+            {label}
+            {required ? <span className={styles.requiredMark}> *</span> : null}
+          </label>
+        ) : null}
+        <div className={styles.selectWrapper}>
+          <select
+            id={selectId}
+            ref={ref}
+            aria-invalid={Boolean(error)}
+            aria-describedby={describedBy}
+            value={value}
+            defaultValue={defaultValue}
+            className={cn(styles.select, error && styles.selectError)}
+            {...rest}
+          >
+            {placeholder ? (
+              <option value="" disabled={!showPlaceholder} hidden={!showPlaceholder}>
+                {placeholder}
+              </option>
+            ) : null}
+            {options.map((opt) => (
+              <option key={opt.value} value={opt.value}>
+                {opt.label}
+              </option>
+            ))}
+          </select>
+          <span className={styles.chevron} aria-hidden>
+            ▾
+          </span>
+        </div>
+        {error ? (
+          <p id={`${selectId}-error`} role="alert" className={styles.error}>
+            {error}
+          </p>
+        ) : hint ? (
+          <p id={`${selectId}-hint`} className={styles.hint}>
+            {hint}
+          </p>
+        ) : null}
+      </div>
+    );
+  },
+);

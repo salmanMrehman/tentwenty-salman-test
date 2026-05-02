@@ -1,0 +1,23 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  width: 100%;
+  max-width: 360px;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0 0 4px;
+  color: var(--color-text-primary);
+}
+
+.formError {
+  background-color: var(--color-status-missing-bg);
+  color: var(--color-status-missing-text);
+  border: 1px solid var(--color-status-missing-bg);
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+}

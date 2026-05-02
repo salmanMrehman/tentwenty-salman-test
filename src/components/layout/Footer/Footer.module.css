@@ -1,0 +1,13 @@
+.footer {
+  background-color: var(--color-surface-card);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 12px;
+  padding: 18px 24px;
+  text-align: center;
+}
+
+.text {
+  margin: 0;
+  font-size: 12px;
+  color: var(--color-text-muted);
+}

@@ -1,0 +1,56 @@
+.layout {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr;
+  background-color: var(--color-surface-card);
+}
+
+@media (min-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.formColumn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 16px;
+}
+
+.formCenter {
+  width: 100%;
+  max-width: 360px;
+}
+
+.brandColumn {
+  display: none;
+  background-color: var(--color-brand-500);
+  color: var(--color-text-inverse);
+  padding: 48px;
+  align-items: center;
+}
+
+@media (min-width: 900px) {
+  .brandColumn {
+    display: flex;
+  }
+}
+
+.brandContent {
+  max-width: 420px;
+}
+
+.brandTitle {
+  font-size: 36px;
+  font-weight: 700;
+  margin: 0 0 16px;
+  letter-spacing: -0.02em;
+}
+
+.brandTagline {
+  font-size: 15px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0;
+}

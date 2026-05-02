@@ -1,0 +1,25 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.completed {
+  background-color: var(--color-status-completed-bg);
+  color: var(--color-status-completed-text);
+}
+
+.incomplete {
+  background-color: var(--color-status-incomplete-bg);
+  color: var(--color-status-incomplete-text);
+}
+
+.missing {
+  background-color: var(--color-status-missing-bg);
+  color: var(--color-status-missing-text);
+}

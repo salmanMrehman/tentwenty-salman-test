@@ -1,0 +1,47 @@
+/*
+ * Color tokens - single source of truth.
+ *
+ * No component or page should ever hardcode a hex/rgb value. Always
+ * reference tokens via Tailwind classes (defined in tailwind.config.ts)
+ * or via `var(--color-*)` from CSS modules.
+ */
+
+:root {
+  /* Brand (the blue from the design) */
+  --color-brand-50: #eef2ff;
+  --color-brand-100: #dde6ff;
+  --color-brand-500: #2155cd;
+  --color-brand-600: #1c4cba;
+  --color-brand-700: #1a3da3;
+
+  /* Surfaces */
+  --color-surface-page: #f8f9fb;
+  --color-surface-card: #ffffff;
+  --color-surface-subtle: #f5f7fa;
+  --color-surface-hover: #f1f3f7;
+
+  /* Borders */
+  --color-border-subtle: #eef0f3;
+  --color-border-default: #e2e5ea;
+  --color-border-strong: #cbd0d8;
+
+  /* Text */
+  --color-text-primary: #0f172a;
+  --color-text-secondary: #475467;
+  --color-text-muted: #98a2b3;
+  --color-text-inverse: #ffffff;
+
+  /* Status badges (matching the design) */
+  --color-status-completed-bg: #dcfae6;
+  --color-status-completed-text: #067647;
+  --color-status-incomplete-bg: #fef3c7;
+  --color-status-incomplete-text: #b45309;
+  --color-status-missing-bg: #fde2e4;
+  --color-status-missing-text: #c01048;
+
+  /* Accent */
+  --color-accent-orange: #fa8c5b;
+
+  /* Focus ring */
+  --color-focus-ring: rgba(33, 85, 205, 0.35);
+}

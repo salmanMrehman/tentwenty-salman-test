@@ -1,0 +1,29 @@
+.shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-surface-page);
+}
+
+.content {
+  flex: 1;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px 16px 12px;
+}
+
+.footerArea {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 16px 24px;
+}
+
+@media (min-width: 768px) {
+  .content,
+  .footerArea {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
