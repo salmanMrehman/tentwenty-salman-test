@@ -21,12 +21,16 @@ export interface ModalProps {
   hideCloseButton?: boolean;
 }
 
+/** DOM id for the portal container — lives inside `<main>` in `_app.tsx`. */
+export const MODAL_ROOT_ID = "modal-root";
+
 /**
  * Accessible modal/dialog.
  *
  * Implementation notes:
- *  - Renders to a portal anchored on `document.body` to escape stacking
- *    contexts.
+ *  - Portals into `#modal-root` inside `<main>` so typography matches the rest
+ *    of the app (Inter / Tailwind `font-sans`). Falls back to `document.body`
+ *    if the mount node is missing (e.g. isolated tests).
  *  - Closes on backdrop click and Escape key.
  *  - Locks body scroll while open.
  */
@@ -76,6 +80,9 @@ export function Modal({
   if (!isOpen) return null;
   if (typeof document === "undefined") return null;
 
+  const mount =
+    document.getElementById(MODAL_ROOT_ID) ?? document.body;
+
   return createPortal(
     <div
       className={styles.backdrop}
@@ -109,6 +116,6 @@ export function Modal({
         {footer ? <footer className={styles.footer}>{footer}</footer> : null}
       </div>
     </div>,
-    document.body,
+    mount,
   );
 }

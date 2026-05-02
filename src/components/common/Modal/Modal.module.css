@@ -11,6 +11,7 @@
 }
 
 .dialog {
+  font-family: inherit;
   background-color: var(--color-surface-card);
   border-radius: 12px;
   box-shadow: 0 20px 25px -5px rgba(15, 23, 42, 0.1),

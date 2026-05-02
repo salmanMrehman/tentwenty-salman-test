@@ -31,7 +31,13 @@
   border: 1px solid var(--color-border-default);
   border-radius: 8px;
   cursor: pointer;
-  transition: border-color 120ms ease, box-shadow 120ms ease;
+  transition: border-color 120ms ease, box-shadow 120ms ease,
+    color 120ms ease;
+}
+
+/** Muted label when the disabled empty option is shown (placeholder). */
+.selectPlaceholder {
+  color: var(--color-text-muted);
 }
 
 .select:hover:not(:disabled):not([aria-invalid="true"]) {

@@ -49,12 +49,12 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
       ? `${selectId}-hint`
       : undefined;
 
-    // We render an empty <option> only when there's a placeholder and no
-    // value — this keeps the placeholder behaving like a native one.
-    const showPlaceholder =
-      Boolean(placeholder) &&
-      (value === undefined || value === "") &&
-      (defaultValue === undefined || defaultValue === "");
+    // Empty selection shows the placeholder row. Keep it `disabled` so it
+    // cannot be mistaken for a real choice and matches native UX patterns.
+    const resolvedValue =
+      value !== undefined ? value : defaultValue !== undefined ? defaultValue : "";
+    const showsPlaceholderRow =
+      Boolean(placeholder) && String(resolvedValue ?? "") === "";
 
     return (
       <div className={cn(styles.field, className)}>
@@ -72,11 +72,15 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
             aria-describedby={describedBy}
             value={value}
             defaultValue={defaultValue}
-            className={cn(styles.select, error && styles.selectError)}
+            className={cn(
+              styles.select,
+              error && styles.selectError,
+              showsPlaceholderRow && styles.selectPlaceholder,
+            )}
             {...rest}
           >
             {placeholder ? (
-              <option value="" disabled={!showPlaceholder} hidden={!showPlaceholder}>
+              <option value="" disabled>
                 {placeholder}
               </option>
             ) : null}

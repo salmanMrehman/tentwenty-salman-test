@@ -35,6 +35,12 @@ export default function App({
         </Head>
         <main className={`${inter.variable} font-sans`}>
           <Component {...pageProps} />
+          {/*
+            Dialogs portal here (not document.body) so they inherit Inter /
+            font-sans from this subtree. Body-level portals fall back to the
+            browser default serif when --font-inter is only defined on main.
+          */}
+          <div id="modal-root" />
         </main>
       </ReduxProvider>
     </SessionProvider>

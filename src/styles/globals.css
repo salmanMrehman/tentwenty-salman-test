@@ -27,6 +27,17 @@ a {
   text-decoration: none;
 }
 
+/*
+ * Native controls often ignore inherited font unless told otherwise — keeps
+ * inputs/selects/textareas/buttons aligned with Inter everywhere.
+ */
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+
 /* Focus visible: consistent ring across the app */
 :focus-visible {
   outline: 2px solid var(--color-focus-ring);

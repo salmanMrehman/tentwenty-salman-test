@@ -191,7 +191,7 @@ export function EntryModal({
         <Select
           label={APP_STRINGS.entryModal.workTypeLabel}
           required
-          placeholder={APP_STRINGS.workTypeLabels.bug_fixes}
+          placeholder={APP_STRINGS.entryModal.workTypePlaceholder}
           hint={APP_STRINGS.entryModal.workTypeHint}
           options={WORK_TYPE_OPTIONS}
           value={form.workType}
